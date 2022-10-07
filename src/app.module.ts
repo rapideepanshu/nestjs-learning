@@ -1,17 +1,17 @@
 import { Module } from '@nestjs/common';
-import { TasksModule } from './tasks/tasks.module';
+import { StudentModule } from './students/student.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
-    TasksModule,
+    StudentModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
       port: 5432,
       username: 'postgres',
       password: 'Podio123!',
-      database: 'task Management',
+      database: 'college management',
       autoLoadEntities: true,
       synchronize: true,
     }),
