@@ -16,11 +16,13 @@ export class StudentRepository extends Repository<Student> {
     if (status) {
       query.andWhere('student.course_status=:status', { status });
     }
+
     if (first_name) {
       query.andWhere('LOWER(student.first_name) LIKE LOWER(:first_name)', {
         first_name: `%${first_name}%`,
       });
     }
+
     if (last_name) {
       query.andWhere('LOWER(student.last_name) LIKE LOWER(:last_name)', {
         last_name: `%${last_name}%`,
