@@ -1,5 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { User } from './../auth/user.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { CourseStatus } from './course-status.enum';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Student {
@@ -17,4 +19,8 @@ export class Student {
 
   @Column()
   course_status: CourseStatus;
+
+  @ManyToOne((_type) => User, (user) => user.students, { eager: false })
+  @Exclude({ toPlainOnly: true })
+  user: User;
 }
