@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { StudentModule } from './students/student.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { CronService } from './cron/cron.service';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { AuthModule } from './auth/auth.module';
       synchronize: true,
     }),
     AuthModule,
+    ScheduleModule.forRoot(),
   ],
+  providers: [CronService],
 })
 export class AppModule {}
